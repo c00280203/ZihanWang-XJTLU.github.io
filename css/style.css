@@ -123,9 +123,10 @@ body {
 .typewriter {
     font-size: 1.5rem;
     color: var(--text-light);
-    height: 2rem;
+    min-height: 4rem; /* 将固定高度改为最小高度，防止文字重叠 */
     font-weight: 400;
-    margin-bottom: 30px;
+    margin-bottom: 20px;
+    padding: 0 15px; /* 手机端两边留点空隙 */
 }
 .btn {
     display: inline-block;
@@ -137,6 +138,12 @@ body {
     font-weight: 500;
     transition: all 0.3s;
     border: 2px solid var(--text-main);
+}
+.hero-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px; /* 按钮之间的间距 */
+    flex-wrap: wrap; /* 允许按钮换行 */
 }
 .btn:hover { transform: translateY(-3px); box-shadow: 0 10px 20px rgba(0,0,0,0.15); }
 .btn-outline {
@@ -236,4 +243,28 @@ footer {
     .grid-2 { grid-template-columns: 1fr; }
     .cursor { display: none; } /* 移动端隐藏自定义鼠标 */
     * { cursor: auto; }
+}
+
+@media (max-width: 768px) {
+    /* 之前的代码保留 */
+    .nav-links { display: none; }
+    .hero h1 { font-size: 2.5rem; }
+    .grid-2 { grid-template-columns: 1fr; }
+    .cursor { display: none; }
+    * { cursor: auto; }
+
+    /* 新增的手机端适配代码 */
+    .hero-buttons {
+        flex-direction: column; /* 手机端按钮改为上下竖排 */
+        width: 100%;
+        align-items: center;
+        gap: 15px;
+    }
+    .btn {
+        width: 80%; /* 手机端按钮稍微拉长一点更好看 */
+        max-width: 250px;
+    }
+    .typewriter {
+        font-size: 1.1rem; /* 手机端字号稍微缩小 */
+    }
 }
